@@ -1,0 +1,391 @@
+/* =========================================================
+   LUMIÈRE / THAIS SEMIJOIAS — mobile.css
+   Responsividade completa — mobile first
+   ========================================================= */
+
+/* ---- GARANTIAS BASE MOBILE ---- */
+html, body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---- PRODUCT IMAGE FIX — garante que a imagem ocupa o espaço certo ---- */
+.product-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--champagne);
+}
+.product-img-wrap img.product-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.product-card:hover .product-img-wrap img.product-img {
+  transform: scale(1.06);
+}
+
+/* ---- TOUCH: mostrar ações em mobile (sem hover) ---- */
+@media (hover: none) {
+  .product-actions {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .look-overlay {
+    opacity: 1;
+    background: rgba(0,0,0,0.25);
+  }
+  .lb-info {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================
+   BREAKPOINT: TABLET (max 1024px)
+   ============================================= */
+@media (max-width: 1024px) {
+  :root {
+    --section-gap: 64px;
+    --header-h: 72px;
+  }
+
+  /* Header */
+  .header-nav { display: none !important; }
+  .menu-toggle { display: flex !important; }
+  .header-inner { padding: 0 24px; }
+
+  /* Hero */
+  .hero { padding: calc(var(--header-h) + 32px) 24px 72px; }
+  .hero-ornament { display: none; }
+  .hero-title { font-size: clamp(2.4rem, 6vw, 4rem); }
+
+  /* Categorias */
+  .categories-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  .cat-large { grid-column: 1 / 3; grid-row: auto; aspect-ratio: 16/7; }
+  .cat-wide  { grid-column: 1 / 3; aspect-ratio: 16/7; }
+
+  /* Produtos */
+  .products-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+  /* Brand Story */
+  .brand-story-grid { grid-template-columns: 1fr; gap: 40px; }
+  .brand-story-visual { max-width: 480px; margin: 0 auto; width: 100%; }
+
+  /* Lookbook */
+  .lookbook-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+  .look-tall { grid-row: 1 / 3; }
+  .look-wide { grid-column: auto; aspect-ratio: 1; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer-brand { grid-column: 1 / 3; }
+
+  /* Sobre */
+  .about-intro-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-img-stack  { height: 420px; max-width: 480px; margin: 0 auto; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid   { grid-template-columns: repeat(2, 1fr); }
+
+  /* Carrinho */
+  .cart-layout { grid-template-columns: 1fr; gap: 24px; }
+  .cart-summary { position: static; }
+
+  /* Coleções shop */
+  .shop-layout { grid-template-columns: 200px 1fr; gap: 20px; }
+}
+
+/* =============================================
+   BREAKPOINT: MOBILE LARGO (max 768px)
+   ============================================= */
+@media (max-width: 768px) {
+  :root {
+    --section-gap: 48px;
+    --header-h: 60px;
+  }
+
+  .container { padding: 0 16px; }
+
+  /* Header mobile */
+  .header-inner { padding: 0 16px; }
+  .logo-text    { font-size: 1.3rem; }
+
+  /* Hero */
+  .hero { padding: calc(var(--header-h) + 24px) 16px 56px; min-height: 85svh; }
+  .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
+  .hero-subtitle { font-size: 0.88rem; }
+  .hero-actions { flex-direction: column; gap: 10px; }
+  .hero-actions .btn { width: 100%; text-align: center; justify-content: center; }
+  .scroll-hint  { display: none; }
+
+  /* Highlights */
+  .highlights-bar { padding: 12px 16px; overflow-x: auto; }
+  .highlights-inner { gap: 12px; justify-content: flex-start; flex-wrap: nowrap; min-width: max-content; }
+  .highlight-sep { display: none; }
+  .highlight-item { font-size: 0.72rem; flex-shrink: 0; }
+
+  /* Categorias */
+  .categories-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 10px;
+  }
+  .cat-large { grid-column: 1 / 3; aspect-ratio: 16/8; }
+  .cat-wide  { grid-column: 1 / 3; aspect-ratio: 16/8; }
+
+  /* Seção header */
+  .section-header { flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 24px; }
+  .section-title  { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+
+  /* Produtos */
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .product-name  { font-size: 0.9rem; }
+  .product-info  { padding: 10px; }
+  .product-add-btn { font-size: 0.68rem; padding: 8px; }
+
+  /* Slider */
+  .slider-btn { display: none; }
+  .products-slider { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .slider-slide   { scroll-snap-align: start; min-width: 85vw; }
+
+  /* Mid Banner */
+  .mid-banner { padding: 60px 16px; }
+  .mid-banner-content h2 { font-size: clamp(1.8rem, 6vw, 2.8rem); }
+
+  /* Brand Story */
+  .brand-story-grid { gap: 32px; }
+  .brand-img-frame  { aspect-ratio: 4/3; }
+  .brand-badge { bottom: -10px; right: -10px; width: 72px; height: 72px; }
+  .brand-badge strong { font-size: 1.2rem; }
+
+  /* Lookbook */
+  .lookbook-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .look-tall { grid-row: auto; }
+  .look-wide { grid-column: 1 / 3; aspect-ratio: 16/9; }
+
+  /* Depoimentos */
+  .testimonial-text { font-size: 1.1rem; }
+
+  /* Newsletter */
+  .newsletter { padding: 56px 16px; }
+  .newsletter-form {
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 12px;
+    gap: 8px;
+  }
+  .newsletter-form input  { padding: 8px 4px; }
+  .newsletter-form .btn   { width: 100%; border-radius: 999px; }
+
+  /* Footer */
+  .footer-top   { padding: 48px 0 40px; }
+  .footer-grid  { grid-template-columns: 1fr; gap: 28px; }
+  .footer-brand { grid-column: auto; }
+  .footer-bottom-inner { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+
+  /* Page hero */
+  .page-hero { min-height: 260px; padding: calc(var(--header-h) + 32px) 16px 40px; }
+  .page-hero-content h1 { font-size: clamp(2rem, 8vw, 3.5rem); }
+
+  /* Sobre */
+  .about-img-stack { height: 320px; }
+  .about-quote { right: 0; max-width: 180px; font-size: 0.78rem; }
+  .values-grid { grid-template-columns: 1fr; gap: 12px; }
+  .value-card  { padding: 24px 20px; }
+  .timeline::before { left: 20px; }
+  .timeline-item,
+  .timeline-item.right {
+    padding-left: 64px;
+    padding-right: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .timeline-marker {
+    left: 20px;
+    width: 44px; height: 44px;
+    font-size: 0.55rem;
+  }
+  .timeline-content { max-width: 100%; }
+  .team-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  /* Lookbook hero */
+  .lookbook-hero-content h1 { font-size: clamp(3rem, 12vw, 6rem); }
+  .lb-masonry {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .lb-item.lb-tall { grid-row: 1 / 3; }
+  .lb-item.lb-wide { grid-column: 1 / 3; aspect-ratio: 16/9; }
+
+  /* Contato */
+  .contact-layout { grid-template-columns: 1fr; gap: 28px; }
+  .contact-info h2 { font-size: 1.6rem; }
+  .contact-form-wrap { padding: 24px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+
+  /* Carrinho */
+  .cart-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .cart-item { grid-template-columns: 72px 1fr; gap: 12px; }
+  .cart-item-actions { grid-column: 1 / 3; flex-direction: row; justify-content: space-between; align-items: center; }
+  .cart-item-img { width: 72px; height: 72px; }
+
+  /* Coleções shop */
+  .shop-layout { grid-template-columns: 1fr; }
+  .filters-sidebar { display: none; }
+  .filters-sidebar.open { display: block; position: fixed; inset: 0; z-index: 500; overflow-y: auto; border-radius: 0; border: none; }
+  .shop-toolbar { padding: 10px 0; }
+  .category-tabs { overflow-x: auto; flex-wrap: nowrap; gap: 4px; padding-bottom: 2px; -webkit-overflow-scrolling: touch; }
+  .category-tabs::-webkit-scrollbar { display: none; }
+  .tab-btn { white-space: nowrap; flex-shrink: 0; }
+
+  /* FloatButtons */
+  .whatsapp-float { right: 16px; bottom: 20px; width: 48px; height: 48px; }
+  .back-to-top    { right: 72px; bottom: 20px; width: 40px; height: 40px; }
+}
+
+/* =============================================
+   BREAKPOINT: MOBILE PEQUENO (max 480px)
+   ============================================= */
+@media (max-width: 480px) {
+  :root { --header-h: 56px; }
+
+  /* Logo menor */
+  .logo-text { font-size: 1.15rem; }
+  .logo-sub  { font-size: 0.48rem; }
+
+  /* Hero */
+  .hero-title    { font-size: clamp(1.9rem, 9vw, 2.8rem); }
+  .hero-subtitle { font-size: 0.82rem; max-width: 100%; }
+  .hero-eyebrow  { font-size: 0.62rem; }
+
+  /* Categorias — coluna única */
+  .categories-grid { grid-template-columns: 1fr; }
+  .cat-large, .cat-wide { grid-column: auto; aspect-ratio: 16/9; }
+  .cat-card { aspect-ratio: 16/9; }
+
+  /* Produtos 2 colunas pequenas */
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .product-name  { font-size: 0.82rem; }
+  .product-price { font-size: 0.88rem; }
+  .product-info  { padding: 8px; }
+  .product-add-btn { font-size: 0.6rem; padding: 6px; letter-spacing: 0.06em; }
+  .product-category { font-size: 0.58rem; }
+
+  /* Section títulos */
+  .section-title { font-size: 1.5rem; }
+
+  /* Slider mobile: 1 card por vez */
+  .slider-slide { min-width: 80vw; }
+
+  /* Mid banner */
+  .mid-banner { padding: 48px 16px; }
+  .mid-banner-content h2 { font-size: 1.6rem; }
+  .mid-banner-content p  { font-size: 0.82rem; }
+
+  /* Brand story */
+  .brand-img-frame { aspect-ratio: 1; }
+  .stat-number     { font-size: 2.2rem; }
+
+  /* Lookbook */
+  .lookbook-grid { grid-template-columns: 1fr; }
+  .look-tall, .look-wide { grid-column: auto; grid-row: auto; aspect-ratio: 4/3; }
+
+  /* Newsletter */
+  .newsletter-content h2 { font-size: 1.6rem; }
+
+  /* Sobre - equipe */
+  .team-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .team-card h4 { font-size: 0.75rem; }
+  .team-card span { font-size: 0.6rem; }
+
+  /* Lookbook hero */
+  .lookbook-hero-content h1 { font-size: clamp(2.5rem, 14vw, 5rem); }
+  .lb-masonry { grid-template-columns: 1fr; }
+  .lb-item.lb-tall, .lb-item.lb-wide { grid-column: auto; grid-row: auto; aspect-ratio: 4/3; }
+
+  /* Contato channels */
+  .channel { padding: 10px; gap: 10px; }
+  .ch-value { font-size: 0.78rem; }
+
+  /* Carrinho menor */
+  .cart-item { grid-template-columns: 60px 1fr; gap: 10px; }
+  .cart-item-img { width: 60px; height: 60px; }
+  .cart-item-name { font-size: 0.82rem; }
+
+  /* Botões flutuantes */
+  .whatsapp-float { width: 44px; height: 44px; right: 12px; bottom: 16px; }
+  .whatsapp-float svg { width: 22px; height: 22px; }
+  .back-to-top { right: 64px; bottom: 16px; width: 36px; height: 36px; font-size: 0.85rem; }
+
+  /* Footer */
+  .footer-grid { gap: 20px; }
+  .footer-col h4 { font-size: 0.65rem; }
+  .footer-col a  { font-size: 0.78rem; }
+
+  /* FAQ */
+  .faq-question { font-size: 0.88rem; }
+}
+
+/* =============================================
+   BREAKPOINT: SUPER PEQUENO (max 360px)
+   ============================================= */
+@media (max-width: 360px) {
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .product-img-wrap { aspect-ratio: 1; }
+  .hero-title { font-size: 1.7rem; }
+  .btn { padding: 12px 20px; font-size: 0.72rem; }
+}
+
+/* =============================================
+   FIXES GERAIS DE ACESSIBILIDADE MOBILE
+   ============================================= */
+
+/* Mínimo de toque: 44x44px */
+button, a, .icon-btn, .btn, .tab-btn, .page-btn {
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Evitar zoom em inputs no iOS */
+input, select, textarea {
+  font-size: 16px !important;
+}
+
+/* Smooth scroll no iOS */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Safe area para iPhones com notch */
+.header-inner {
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+}
+.whatsapp-float {
+  bottom: max(20px, env(safe-area-inset-bottom));
+}
+.back-to-top {
+  bottom: max(20px, env(safe-area-inset-bottom));
+}

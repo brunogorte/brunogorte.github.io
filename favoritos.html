@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favoritos | Thais Semijoias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/mobile.css" />
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-follower"></div>
+
+  <header id="header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <a href="index.html"><span class="logo-text">Thais</span><span class="logo-sub">Semijoias</span></a>
+      </div>
+      <nav class="header-nav">
+        <ul>
+          <li><a href="index.html" class="nav-link">Início</a></li>
+          <li><a href="colecoes.html" class="nav-link">Coleções</a></li>
+          <li><a href="sobre.html" class="nav-link">Nossa História</a></li>
+          <li><a href="lookbook.html" class="nav-link">Lookbook</a></li>
+          <li><a href="contato.html" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="carrinho.html" class="icon-btn cart-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+        <button class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="colecoes.html">Coleções</a></li>
+      <li><a href="sobre.html">Nossa História</a></li>
+      <li><a href="lookbook.html">Lookbook</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+  </div>
+
+  <main style="padding-top: var(--header-h);">
+    <section class="section">
+      <div class="container">
+        <div class="cart-header">
+          <h1 class="section-title">Meus <em>Favoritos</em></h1>
+          <a href="colecoes.html" class="section-link">← Ver todas as coleções</a>
+        </div>
+        <div class="products-grid" id="wishlist-grid">
+          <!-- Preenchido via JS -->
+        </div>
+        <div id="wishlist-empty" style="display:none;text-align:center;padding:80px 0;">
+          <p style="font-family:var(--font-display);font-size:2rem;font-weight:300;color:var(--warm-gray);margin-bottom:24px;">
+            Nenhum favorito ainda 💛
+          </p>
+          <a href="colecoes.html" class="btn btn-primary">Explorar Coleções</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2025 Thais Semijoias.</p>
+        <div class="footer-legal"><a href="privacidade.html">Privacidade</a><a href="termos.html">Termos</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top">↑</button>
+  <div class="toast" id="toast"></div>
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/favoritos.js"></script>
+</body>
+</html>
